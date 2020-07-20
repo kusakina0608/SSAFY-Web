@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+    <h1>회원가입 양식 만들기</h1>
+    <form>
+        이름 &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" id="name" placeholder="이름을 입력하세요" width="200"/><br/>
+        아이디 &nbsp; &nbsp; <input type="text" id="id" placeholder="아이디를 입력하세요" width="200"/><br/>
+        비밀번호 &nbsp;<input type="password" id="password" placeholder="비밀번호를 입력하세요" width="200"><br/>
+        성별 &nbsp; &nbsp; &nbsp; 
+        <input type="radio" name="gender" value="male" checked>남 &nbsp; &nbsp;
+        <input type="radio" name="gender" value="female">여 &nbsp; &nbsp;<br/>
+        이름 &nbsp; &nbsp; &nbsp; &nbsp;<select>
+            <option>게임하기</option>
+            <option selected>영화보기</option>
+            <option>노래듣기</option>
+            <option>여행가기</option>
+        </select><br/>
+        <input type="submit" value="제출하기"/>
+    </form>
+</body>
+</html>

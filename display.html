@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <style>
+        h3 {
+            display: none;
+        }
+        div{
+            border: 1px solid black;
+        }
+        span{
+            display: block;
+            border: 1px solid black;
+        }
+        .inline-block-span {
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <h3>보이지 않아</h3>
+    <!-- block 요소 -->
+    <div>aa</div>
+    <!-- inline 요소 -->
+    <span>bb</span>
+    <!-- inline-block 요소 -->
+    <div>
+        inline 요소는 width, height값이 적용되지 않지만, <span class="inline-block-span">inline-block 요소는</span> width, height값이 제대로 적용되면서 <span class="inline-block-span">inline으로 적용된다.</span>
+    </div>
+    <!-- flex -->
+</body>
+</html>

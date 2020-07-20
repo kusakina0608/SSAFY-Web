@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 2. <style> tag를 사용한 CSS의 적용 */
+        /* 인터널 방식 */
+        h2{
+            color:royalblue;
+        }
+        /* 클래스 앞에는 .이 붙는다. */
+        .tag1 {
+            color: blueviolet;
+        }
+        /* id 앞에는 #이 붙는다. */
+        #tag2{
+            color: darkgoldenrod;
+        }
+        .div1{
+            color: red;
+        }
+    </style>
+    <!-- 익스터널 방식 -->
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <h1>aaa</h1>
+    <!-- CSS를 적용하는 방법은 크게 3가지가 있다. -->
+    <!-- 1. style 속성값을 통한 CSS의 적용(인라인 방식) -->
+    <h1 style="color: pink">1. style 속성값을 통한 CSS의 적용</h1>
+    <h2>2. style tag를 사용한 CSS의 적용</h2>
+    <h3>3. 별도의 css 파일을 통한 CSS의 적용</h3> 
+
+    <!-- class는 중복될 수 있다. 따라서 여러 태그에 일괄적으로 CSS를 적용할 때 많이 사용한다. -->
+    <h4 class="tag1">tag 1</h4>
+    <!-- id는 중복을 허용하지 않는다. -->
+    <h5 id="tag2">tag 2</h5>
+
+    <!-- CSS 상속: font 관련이라거나, color 관련은 모두 상속된다. -->
+    <div class="div1">div1
+        <div>div2</div>
+    </div>
+    
+</body>
+</html>

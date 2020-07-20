@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 주요 속성 배우기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            font-family: 'Nanum Myeongjo', serif;
+        }
+        .test1 {
+            color: blue;
+            font-size: 27px;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        .test2 {
+            width: 20%;
+            height: 20%;
+            color: white;
+            background-color: red;
+            text-align: center;
+        }
+        .test3 {
+            background-image: url("../img/home.png");
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-size: auto;
+            /* contain은 이미지를 채우되 비율에 맞게 채운다 */
+            /* background-size: contain; */
+            /* cover는 이미지를 채우되 비율을 신경쓰지 않고 채운다 */
+            /* background-size: cover; */
+            background-position: center center;
+            /* background-position: left center; */
+            /* background-position: bottom center; */
+        }
+        .margin-aa {
+            margin-top: 100px;
+            margin-bottom: 10px;
+        }
+        
+        .margin-bb {
+            margin-top: 30px;
+            margin: 30px 30px 30px 30px;
+            margin: 30px 10px;
+
+            /* solid는 그냥 직선, dotted는 점선 */
+            border-top: 10px solid black;
+            border-right: 5px dotted blue;
+            border-bottom: 8px double red;
+            border-left: 16px solid green;
+        }
+        .circle{
+            background-color: blue;
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+        }
+        /* 마진 병합현상은 서로의 margin 값이 겹칠 때 더 큰 부분만 나타나고 낮은 부분은 정상적으로 표시되지 않는다.*/
+        .focus-input:focus{
+            background-color: green;
+        }
+        .circle:hover{
+            background-color: red;
+        }
+        .aa{
+            width: 400px;
+            height: 400px;
+            background-color: red;
+        }
+        .bb{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+        .aa:hover{
+            background-color: cadetblue;
+        }
+        .bb:hover{
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div class="test1">aa</div>
+    <div class="test2">test2</div>
+    <div class="test3">test3</div>
+    <br/>
+    <br/>
+    <div class="margin-aa">aa</div>
+    <div class="margin-bb">bb</div>
+    <div class="circle"></div>
+
+    <input class="focus-input"/>
+
+    <div class="aa">
+        <div class="bb"></div>
+    </div>
+</body>
+</html>
