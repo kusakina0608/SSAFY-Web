@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300|Roboto:400,700,300|Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300" rel="stylesheet">
+    <link rel="stylesheet" href="css/holygraillayout.css"/>
+</head>
+<body>
+    <header class="header">
+        <nav class="header-nav">
+            <div class="header-nav-icon-wrapper">
+                <div class="header-nav-icon"></div>
+            </div>
+            <div class="header-nav-menu-wrapper">
+                <div class="header-nav-menu">About</div>
+                <div class="header-nav-menu">Posts</div>
+                <div class="header-nav-menu">Typography</div>
+            </div>
+        </nav>
+        <div class="header-image">
+            <div class="header-image-title">Kina Tech</div>
+            <br/>
+            <div class="header-image-subtitle">ლ(´ڡ`ლ)</div>
+        </div>
+    </header>
+    <main class="main">
+        <nav class="main-nav">
+            <div class="main-nav-profile">
+                <div class="main-nav-profile-image"></div>
+                <div class="main-nav-profile-detail">Hello. This is sample website. please visit my github.</div>
+            </div>
+            <div class="main-nav-horizontal-bar"></div>
+            <div class="main-nav-category">Network</div>
+            <div class="main-nav-category">Embedded</div>
+            <div class="main-nav-category">Algorithm</div>
+            <div class="main-nav-category">Data Structure</div>
+            <div class="main-nav-category">English</div>
+            <div class="main-nav-category">Japanese</div>
+            <div class="main-nav-horizontal-bar"></div>
+            <div class="main-nav-category">Animation</div>
+            <div class="main-nav-category">Game</div>
+            <div class="main-nav-category">Drawing</div>
+            <div class="main-nav-horizontal-bar"></div>
+        </nav>
+        <section class="main-section">
+            <header class="main-section-header">
+                <div class="main-section-header-title">
+                    Basic Mathematics for Neural Networks
+                </div>
+                <div class="main-section-header-date">April 1, 2020 ( in Artificial neural network )</div>
+            </header>
+            <article class="main-section-article">
+                <h2> 벡터 덧셈(Vector Addition)</h2><br/>
+                import package<br/><br/>
+                <code>
+                    import re, math, random<br/>
+                </code>
+                <code>
+                    import matplotlib.pyplot as plt<br/>
+                </code>
+                <code>
+                    from collections import defaultdict, Counter<br/>
+                </code>
+                <code>
+                    from functools import partial, reduce<br/>
+                </code>
+                <code>
+                    import numpy as np<br/>
+                </code>
+                <br/>
+                Create data<br/><br/>
+                <code>
+                    v = [x for x in range(1, 11, 2)]<br/>
+                </code>
+                <code>
+                    w = [y for y in range(11, 21, 2)]<br/>
+                </code>
+                <code>
+                    Python ver. Vector Addition<br/>
+                </code>
+                <code>
+                    def vector_add(v, w):<br/>
+                </code>
+                <code>
+                    return [v_i + w_i for v_i, w_i in zip(v,w)]<br/>
+                </code>
+                <code>
+                    vector_add(v, w)<br/>
+                </code>
+                <code>
+                    Numpy ver. Vector Addition<br/>
+                </code>
+                <code>
+                    np.array(v) + np.array(w)<br/>
+                </code>
+                <br/>
+                Python ver. Vector Addition<br/><br/>
+                </code>
+                <code>
+                    def vector_add(v, w):<br/>
+                </code>
+                <code>
+                     &nbsp; &nbsp;return [v_i + w_i for v_i, w_i in zip(v,w)]<br/>
+                </code>
+                <code>
+                    vector_add(v, w)<br/>
+                </code>
+                <br/>
+                Numpy ver. Vector Addition<br/><br/>
+                <code>
+                    np.array(v) + np.array(w)
+                </code>
+                <br/><br/>
+                <h2> Python arithmetic vs. Numpy arithmetic </h2>
+                <br/>......
+            </article>
+            <footer class="main-section-footer">
+                <div class="main-section-footer-prev"> &lt;Prev</div>
+                <div class="main-section-footer-next">Next&gt;</div>
+            </footer>
+        </section>
+        <aside class="main-aside">
+            <a href="https://girlydrop.com/"><div class="main-aside-img"></div></a>
+        </aside>
+    </main>
+    <footer class="footer">
+        <div class="footer-title">Kina Tech</div>
+        <div class="footer-container">
+            <div class="footer-container-item">
+                <strong>Site Map</strong><br/><br/>About<br/>Post<br/>Typography
+            </div>
+            <div class="footer-container-item">
+                <strong>Contact</strong><br/><br/>platina.kusakina@gmail.com<br/>kusakina0608<br/>platina.kusakina<br/>Myrina
+            </div>
+            <div class="footer-container-item">
+                <strong>Subscribe via RSS</strong><br/><br/>A simple website<br/>or blog
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

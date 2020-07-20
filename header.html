@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메뉴 상단바 만들어보기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0px 0px;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+        body {
+            height: 1200px;
+        }
+        .header {
+            height: 200px;
+        }
+        .nav {
+            border-bottom: 3px solid gray;
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 30px;
+            margin: 60px 0px;
+        }
+        .menu-wrapper {
+            height: 60px;
+            display: flex;
+            align-items:center;
+            margin: 0px 60px;
+        }
+        .menu-left {
+            justify-content: start;
+        }
+        .menu-right {
+            justify-content: flex-end;
+        }
+        .menu {
+            text-align: center;
+            height: 30px;
+            width: 120px;
+            border: 1px solid black;
+        }
+        .logo {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="menu-wrapper menu-left">
+                <div class="menu">메뉴 1</div>
+                <div class="menu">메뉴 2</div>
+                <div class="menu">메뉴 3</div>
+            </div>
+            <div class="logo">Logo</div>
+            <div class="menu-wrapper menu-right">
+                <div class="menu">회원가입</div>
+                <div class="menu">로그인</div>
+            </div>
+        </nav>
+    </header>
+    
+</body>
+</html>
