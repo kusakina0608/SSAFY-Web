@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto</title>
+    <style>
+        .number-container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .number {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 100%;
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:rgb(110, 0, 55);
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="BBQ()">생성하기</button>
+    <button class="btn1">생성하기</button>
+    <div class="number-container">
+        <div class="number"></div>
+        <div class="number"></div>
+        <div class="number"></div>
+        <div class="number"></div>
+        <div class="number"></div>
+        <div class="number"></div>
+    </div>
+</body>
+<script>
+    let numbers = document.querySelectorAll(".number");
+    let idx = 0;
+    console.log(numbers);
+    document.querySelector(".btn").addEventListener("click", BBQ);
+
+    function BBQ(){
+        numbers[idx++].textContent = Math.ceil((Math.random()*10));
+        idx %=numbers.length;
+    }
+</script>
+</html>

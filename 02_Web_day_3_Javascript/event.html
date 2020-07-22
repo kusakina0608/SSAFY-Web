@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+</head>
+<body>
+    <button class="clickButton">클릭 하세요</button>
+
+    <button onclick="press_me()">날 눌러줘</button>
+    <script>
+        const button = document.querySelector(".clickButton");
+        console.log(button);
+        button.addEventListener("click", function(){
+            console.log("안녕?");
+        })
+        function press_me(){
+            alert("날 눌렀구나?");
+        }
+    </script>
+</body>
+</html>

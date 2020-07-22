@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" class="input"/>
+    <div class="input-result"></div>
+
+    <script>
+        const input_text = document.querySelector(".input");
+        const input_result = document.querySelector(".input-result");
+
+        input_text.addEventListener("keypress", function(e){
+            console.log(e.key);
+            if(e.key==="Enter"){
+                alert("엔터에서만 동작하는 기능입니다.");
+            }
+        })
+    </script>
+</body>
+</html>

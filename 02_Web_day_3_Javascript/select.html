@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>셀렉트 값 받아오기</title>
+</head>
+<body>
+    <select class="animal">
+        <option value="cat" selected>고양이</option>
+        <option value="dog" >강아지</option>
+        <option value="panda" >팬더</option>
+    </select>
+    <script>
+        const animal = document.querySelector(".animal");
+        animal.addEventListener("change", function(){
+            console.log(document.querySelector(".animal"));
+        })
+    </script>
+</body>
+</html>

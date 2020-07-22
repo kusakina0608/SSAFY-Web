@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript로 태그 만들기</title>
+</head>
+<body>
+    <h1>Heading</h1>
+    <a href="http://kina.iptime.org:8080/">우리집 공유기로</a>
+    <script>
+        const button = document.createElement("button");
+        button.textContent = "버튼";
+        button.setAttribute("onclick","wow()");
+        function wow(){
+            alert("이게 돈까스지");
+        }
+        document.querySelector("body").append(button);
+        document.querySelector("body").prepend(button);
+    </script>
+</body>
+</html>

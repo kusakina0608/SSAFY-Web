@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Event</title>
+</head>
+<body>
+    <input type="text" class="id-input"/>
+    <div class="id-result"></div>
+    <script>
+        const id_input = document.querySelector(".id-input");
+        const id_result = document.querySelector(".id-result");
+        id_input.addEventListener("change",function(e){
+            id_result.textContent = e.target.value + "ლ(´ڡ`ლ)";
+        })
+    </script>
+</body>
+</html>
