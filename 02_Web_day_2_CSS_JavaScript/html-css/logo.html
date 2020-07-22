@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Raleway', sans-serif;
+        }
+        body {
+            margin: 0px;
+        }
+        .nav {
+            position: fixed;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid gray;
+        }
+        .menu-wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: xx-large;
+            font-weight: bold;
+        }
+        .menu {
+            width: 100px;
+            height: 50px;
+            border: 2px solid aliceblue;
+            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin:5px 5px;
+        }
+        .menu:hover {
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav">
+            <div class="menu-wrapper">
+                <div class="menu">Menu 1</div>
+                <div class="menu">Menu 2</div>
+                <div class="menu">Menu 3</div>
+            </div>
+            <div class="logo">Logo</div>
+            <div class="menu-wrapper">
+                <div class="menu">회원가입</div>
+                <div class="menu">로그인</div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div style="height: 3000px;"></div>
+    </main>
+</body>
+</html>

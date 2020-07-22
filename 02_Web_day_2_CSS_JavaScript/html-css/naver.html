@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+    <style>
+        .notification-container {
+            width: 350px;
+            padding: 20px 10px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .profile {
+            display: flex;
+        }
+        .div-margin {
+            margin: 0px 10px;
+        }
+        .profile-image {
+            width: 50px;
+            height: 50px;
+            background-image: url("./img/cat.jpg");
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid lightgray;
+            border-radius: 100%;
+
+        }
+        .profile-name {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gray;
+            font-weight: 600;
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
+        .icon-wrapper {
+            display: flex;
+        }
+        .icon {
+            position: relative;
+            background-size:cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0px 10px;
+        }
+        .icon-bell {
+            width: 40px;
+            height: 40px;
+            background-image: url("./img/bell.png");
+        }
+        .icon-mail {
+            width: 40px;
+            height: 40px;
+            background-image: url("./img/mail.png");
+        }
+        .icon-grid {
+            width: 40px;
+            height: 40px;
+            background-image: url("./img/menu.png");
+        }
+        .notification {
+            position: absolute;
+            height: 20px;
+            border-radius: 20px;
+            background-color:green;
+            padding: 2px 7px;
+            color: white;
+            font-weight: 900;
+            font-size: 15px;
+            top: -5px;
+            right: -10px;
+        }
+        .popup {
+            display: none;
+            position: absolute;
+            width: 200px;
+            height: 300px;
+            background-color: white;
+            border:3px solid darkseagreen;
+            border-radius: 10px;
+            z-index: 99;
+            top: 50px;
+            left: -80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="notification-container">
+        <div class="profile">
+            <div class="profile-image div-margin"></div>
+            <div class="profile-name div-margin">이대진</div>
+        </div>
+        <div class="icon-wrapper">
+            <div class="icon icon-bell">
+                <div class="notification">7</div>
+                <div class="popup"></div>
+            </div>
+            <div class="icon icon-mail">
+                <div class="notification">15</div>
+                <div class="popup"></div>
+            </div>
+            <div class="icon icon-grid"></div>
+        </div>
+    </div>
+</body>
+</html>

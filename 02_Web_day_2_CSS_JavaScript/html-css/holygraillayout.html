@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout</title>
+    <style>
+        .bg-fill {
+            background-color: gray;
+            border: 2px solid black;
+            color: white;
+            padding: 5px;
+            margin: 5px;
+        }
+        .flex-main {
+            display: flex;
+            height: 400px;
+        }
+        .main-nav {
+            flex: 1;
+        }
+        .main-section {
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-section > article {
+            flex: 1;
+        }
+        .main-aside {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-fill">header</header>
+    <main class="flex-main bg-fill">
+        <nav class="main-nav bg-fill">nav</nav>
+        <section class="main-section bg-fill">
+            section
+            <header class="bg-fill">header</header>
+            <article class="bg-fill">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi maiores architecto iusto reiciendis, aperiam mollitia quaerat quam corrupti aliquam adipisci sit excepturi consequuntur tenetur a magni animi perferendis iure dolores.</article>
+            <footer class="bg-fill">footer</footer>
+        </section>
+        <aside class="main-aside bg-fill">aside</aside>
+    </main>
+    <footer class="bg-fill">footer</footer>
+</body>
+</html>
