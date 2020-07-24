@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class List</title>
+</head>
+<body>
+    <div class="default" >hi</div>
+</body>
+<script>
+    const div = document.querySelector("div");
+    console.log(div);
+    div.classList.add("add");
+    console.log("div.classList.add(\"add\");",div);
+    div.classList.add("remove");
+    console.log(div);
+    div.classList.remove("remove");
+    console.log(div);
+    div.classList.toggle("toggle");
+    console.log(div);
+    div.classList.contains("toggle");
+
+    div.classList.replace("toggle", "replace");
+</script>
+</html>

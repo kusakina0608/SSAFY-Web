@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <title>classList 도전</title>
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        body {
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+        div {
+            width: 100%;
+            height:100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .bg-col {
+            background-color: aliceblue;
+        }
+        button {
+            width: 200px;
+            height: 100px;
+            font-size: 24px;
+            font-weight: 600;
+            color: rgb(0, 0, 104);
+            border: 3px solid rgb(0, 0, 104);
+            border-radius: 30px;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="add-class-btn">클래스 추가 버튼</button>
+        <button id="remove-class-btn">클래스 삭제 버튼</button>
+        <button id="toggle-class-btn">클래스 토글 버튼</button>
+    </div>
+</body>
+<script>
+    const div = document.querySelector("div");
+    const add_class_btn = document.querySelector("#add-class-btn");
+    const remove_class_btn = document.querySelector("#remove-class-btn");
+    const toggle_class_btn = document.querySelector("#toggle-class-btn");
+    
+    add_class_btn.addEventListener("click", addClassOnClick);
+    remove_class_btn.addEventListener("click", removeClassOnClick);
+    toggle_class_btn.addEventListener("click", toggleClassOnClick);
+
+    function addClassOnClick(){
+        div.classList.add("bg-col");
+    }
+    
+    function removeClassOnClick(){
+        div.classList.remove("bg-col");
+    }
+    
+    function toggleClassOnClick(){
+        div.classList.toggle("bg-col");
+    }
+</script>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        .form-container {
+            width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+        }
+        .input-container {
+            width: 600px;
+            height: 70px;
+            margin: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            /* border: 1px solid black; */
+            margin: 0 auto;
+        }
+        .input-container > input {
+            font-size: 18px;
+            height: 40%;
+            width: 180px;
+            margin: 0 30px;
+            background-color: aliceblue;
+        }
+        #info-checkbox {
+            width: 30px;
+        }
+        .input-label {
+            width: 200px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #pwd-result {
+            width: 140px;
+            font-size: 12px;
+        }
+        #info-result {
+            width: 180px;
+            font-size: 12px;
+        }
+        #btn-register {
+            width:200px;
+            height:80%;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form>
+            <div class="input-container">
+                <div class="input-label">아이디</div>
+                <input type="text" id="input-id"/>
+            </div>
+            <div class="input-container">
+                <div class="input-label">비밀번호</div>
+                <input type="password" id="input-pwd"/>
+            </div>
+            <div class="input-container">
+                <div class="input-label">비밀번호 확인</div>
+                <input type="password" id="pwd-check"/>
+                <div id="pwd-result"></div>
+            </div>
+            <div class="input-container">
+                <div class="input-label">개인정보 이용 동의</div>
+                <input type="checkbox" id="info-checkbox"/>
+                <div id="info-result"></div>
+            </div>
+            <div class="input-container">
+                <div class="input-label">제출하기</div>
+                <button id="btn-register" disabled>회원가입</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    const element_id = document.querySelector("#input-id");
+    const element_pwd = document.querySelector("#input-pwd");
+    const element_pwd_check = document.querySelector("#pwd-check");
+    const element_pwd_result = document.querySelector("#pwd-result");
+    const element_info = document.querySelector("#info-checkbox");
+    const element_info_result = document.querySelector("#info-result");
+    const element_reg_btn = document.querySelector("#btn-register");
+    
+    element_id.addEventListener("keypress", function(e){
+        if(e.key === 'Enter'){ // enter key pressed
+            if(element_id.value !== ""){
+                if(element_pwd.value === ""){
+                    element_pwd.focus();
+                }else{
+                    valid_check();
+                }
+            }else{
+                alert("아이디를 입력해 주세요.");
+            }
+        }
+    })
+    element_pwd.addEventListener("keypress", function(e){
+        if(e.key === 'Enter'){ // enter key pressed
+            if(element_pwd.value !== ""){
+                if(element_id.value === ""){
+                    element_id.focus();
+                }else{
+                    if(element_pwd_check.value === ""){
+                        element_pwd_check.focus();
+                    }else{
+                        valid_check();
+                    }
+                }
+            }else{
+                alert("비밀번호를 입력해 주세요.");
+            }
+        }
+    })
+    element_pwd.addEventListener("keyup", function(e){
+        console.log(e.keycode);
+        if(element_pwd.value === element_pwd_check.value){
+            element_pwd_result.textContent = "비밀번호가 일치합니다.";
+        }
+        else{
+            element_pwd_result.textContent = "비밀번호가 일치하지 않습니다.";
+        }
+    })
+    element_pwd_check.addEventListener("keyup", function(e){
+        console.log(e.keycode);
+        if(element_pwd.value === element_pwd_check.value){
+            element_pwd_result.textContent = "비밀번호가 일치합니다.";
+        }
+        else{
+            element_pwd_result.textContent = "비밀번호가 일치하지 않습니다.";
+        }
+    })
+    element_info.addEventListener("click", function(e){
+        if(element_info.checked){
+            element_reg_btn.disabled = false;
+            element_info_result.textContent = "";
+        }
+        else{
+            element_reg_btn.disabled = true;
+            element_info_result.textContent = "개인정보 이용에 동의하셔야 회원 가입이 가능합니다.";
+        }
+        console.log(element_info.checked);
+    })
+    element_reg_btn.addEventListener("click", valid_check)
+
+    function valid_check(){
+        if(element_id.value===""){
+            alert("아이디를 입력해 주세요.");
+        }else if(element_pwd.value===""){
+            alert("비밀번호를 입력해 주세요.");
+        }else if(element_pwd_result.textContent !== "비밀번호가 일치합니다."){
+            alert("비밀번호가 일치하지 않습니다.");
+        }else{
+            alert("회원가입이 완료되었습니다.");
+        }
+    }
+</script>
+</html>
