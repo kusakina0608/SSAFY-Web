@@ -19,10 +19,11 @@
         .sort-center{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
             width: 100%;
-            height: 100vh;
+            height: auto;
+            min-height: 100vh;
             border-top: 1px solid #dddddd;
         }
         .skill-list {
@@ -37,12 +38,14 @@
     <!-- Header Part -->
     <header>
         <nav class="navbar navbar-dark bg-dark w-100 position-fixed pl-5 pr-5" style="z-index: 99;">
-            <a class="navbar-brand">이대진</a>
+            <a href="#main-part" class="navbar-brand">이대진</a>
             <ul class="nav justify-content-end">
-                <li class="nav-item"><a class="nav-link text-white">Main</a></li>
-                <li class="nav-item"><a class="nav-link text-white">Skill</a></li>
-                <li class="nav-item"><a class="nav-link text-white">Stack</a></li>
-                <li class="nav-item"><a class="nav-link text-white">Closing</a></li>
+                <li class="nav-item"><a href="#main-part" class="nav-link text-white">Main</a></li>
+                <li class="nav-item"><a href="#about-part" class="nav-link text-white">About</a></li>
+                <li class="nav-item"><a href="#language-part" class="nav-link text-white">Skill</a></li>
+                <li class="nav-item"><a href="#stack-part" class="nav-link text-white">Stack</a></li>
+                <li class="nav-item"><a href="#portfolio-part" class="nav-link text-white">Portfolio</a></li>
+                <li class="nav-item"><a href="#closing-part" class="nav-link text-white">Closing</a></li>
             </ul>
         </nav>
     </header>
@@ -144,7 +147,245 @@
                     </div>
                     <div class="w-25 text-center">85%</div>
                 </li>
+                <li class="list-group-item d-flex align-items-center p-4">
+                    <div class="w-25">C++</div>
+                    <div class="progress w-50 m-auto">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                    </div>
+                    <div class="w-25 text-center">90%</div>
+                </li>
+                <li class="list-group-item d-flex align-items-center p-4">
+                    <div class="w-25">C#</div>
+                    <div class="progress w-50 m-auto">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
+                    </div>
+                    <div class="w-25 text-center">70%</div>
+                </li>
+                <li class="list-group-item d-flex align-items-center p-4">
+                    <div class="w-25">Java</div>
+                    <div class="progress w-50 m-auto">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                    </div>
+                    <div class="w-25 text-center">75%</div>
+                </li>
+                <li class="list-group-item d-flex align-items-center p-4">
+                    <div class="w-25">Python</div>
+                    <div class="progress w-50 m-auto">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+                    </div>
+                    <div class="w-25 text-center">85%</div>
+                </li>
+                <li class="list-group-item d-flex align-items-center p-4">
+                    <div class="w-25">JavaScript</div>
+                    <div class="progress w-50 m-auto">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                    </div>
+                    <div class="w-25 text-center">60%</div>
+                </li>
             </ul>
+        </section>
+        <!-- Stack Section -->
+        <section id="stack-part" class="sort-center pt-5" style="height: 100%;">
+            <div class="h1 bg-primary p-4 text-white w-100 text-center">Skill Stack</div>
+            <!-- Web -->
+            <table class="table w-75 mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">분야</th>
+                        <th scope="col">분류</th>
+                        <th scope="col">스택</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">근거</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Frontend -->
+                    <tr>
+                        <th scope="row" rowspan="10" class="align-middle">Web</th>
+                        <td rowspan="4" class="align-middle">Frontend</td>
+                        <td>HTML/CSS</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>웹페이지 클론 코딩 가능</td>
+                    </tr>
+                    <tr>
+                        <td>Bootstrap</td>
+                        <td>⭐⭐⭐</td>
+                        <td>Bootstrap 5 기준으로 Document 참고하여 개발 가능</td>
+                    </tr>
+                    <tr>
+                        <td>Vue.js</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>다양한 Web Project 개발 진행</td>
+                    </tr>
+                    <tr>
+                        <td>React.js</td>
+                        <td>⭐⭐</td>
+                        <td>Document 참고하여 개발 가능</td>
+                    </tr>
+                    <!-- Backend -->
+                    <tr>
+                        <td rowspan="3" class="align-middle">Backend</td>
+                        <td>Node.js</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>비동기 통신 / REST / Web Server 개발 및 운영</td>
+                    </tr>
+                    <tr>
+                        <td>MySQL</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>MySQL / MariaDB를 사용한 다수의 프로젝트 경험 보유</td>
+                    </tr>
+                    <tr>
+                        <td>Spring Framework</td>
+                        <td>⭐⭐⭐</td>
+                        <td>프레임워크 구조에 대한 이해 및 프로젝트 경험 보유</td>
+                    </tr>
+                    <!-- DevOps -->
+                    <tr>
+                        <td rowspan="3" class="align-middle">DevOps</td>
+                        <td>AWS</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>EC2 Instance를 사용하여 LAMP Stack 구축 및 서버 운영 경험 보유, 다양한 AWS 교육 프로그램 이수</td>
+                    </tr>
+                    <tr>
+                        <td>Nginx</td>
+                        <td>⭐⭐</td>
+                        <td>웹 서버 운영</td>
+                    </tr>
+                    <tr>
+                        <td>Jenkins</td>
+                        <td>⭐</td>
+                        <td>배포 서버 운영</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Embedded -->
+            <table class="table w-75 mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col">분야</th>
+                        <th scope="col">분류</th>
+                        <th scope="col">스택</th>
+                        <th scope="col">Level</th>
+                        <th scope="col">근거</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th rowspan="12" class="align-middle">Embedded</th>
+                        <td rowspan="3" class="align-middle">Firmware</td>
+                        <td>ARM</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>Cortext-M3/A7 아키텍쳐 이해 및 개발 경험</td>
+                    </tr>
+                    <tr>
+                        <td>Raspberry pi</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>Raspberry pi에서 C와 Python으로 Firmware 개발</td>
+                    </tr>
+                    <tr>
+                        <td>NUCLEO-F103RB</td>
+                        <td>학습 예정</td>
+                        <td>ST사 보드 개발(Cortex-M3)</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">RTOS</td>
+                        <td>FreeRTOS</td>
+                        <td>⭐⭐⭐</td>
+                        <td>Thread Programming / 모듈 제어 가능</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" class="align-middle">장비</td>
+                        <td>회로도 이해</td>
+                        <td>⭐⭐⭐</td>
+                        <td>Datasheet / Schematic 분석 가능</td>
+                    </tr>
+                    <tr>
+                        <td>기본 계측</td>
+                        <td>⭐</td>
+                        <td>멀티미터 / 오실로스코프 경험</td>
+                    </tr>
+                    <tr>
+                        <td>Debugger</td>
+                        <td>학습 예정</td>
+                        <td>ST-Link / V2, IAR 환경에서 디버깅</td>
+                    </tr>
+                    <!--  -->
+                    <tr>
+                        <td rowspan="2" class="align-middle">Device Driver</td>
+                        <td>Linux Kernel</td>
+                        <td>⭐⭐⭐</td>
+                        <td>자유롭게 사용 가능, Linux 커널 분석 경험</td>
+                    </tr>
+                    <tr>
+                        <td>Linux Device Driver</td>
+                        <td>⭐</td>
+                        <td>Device Tree / 캐릭터 Device Driver 개발 경험</td>
+                    </tr>
+                    <tr>
+                        <td class="align-middle">Embedded UI</td>
+                        <td>Qt</td>
+                        <td>⭐⭐⭐</td>
+                        <td>C++ 대신, Python으로 개발(PyQt)</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="align-middle">IoT</td>
+                        <td>Connectivity</td>
+                        <td>⭐⭐⭐</td>
+                        <td>MQTT, LoRa, BLE, Wifi</td>
+                    </tr>
+                    <tr>
+                        <td>Security</td>
+                        <td>⭐</td>
+                        <td>SSL/TLS<td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- Portfolio Section -->
+        <section id="portfolio-part" class="sort-center h-auto  pt-5">
+            <div class="h1 bg-primary p-4 text-white w-100 text-center">Portfolio</div>
+            <div class="container">
+                <div class="row row-cols-auto">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Cras justo odio</li>
+                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                <li class="list-group-item">Vestibulum at eros</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </section>
+        <!-- Closing Section -->
+        <section id="closing-part" class="sort-center pt-5">
+            <div class="h1 bg-primary p-4 text-white w-100 text-center">Closing</div>
+            <div class="card" style="width: 64rem;">
+                <img src="./images/closing.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h3 class="text-center">저는 지금 햄버거가 먹고 싶습니다.</h3>
+                    <p class="card-text text-center">
+                        현재 바로 아래층에서 Burgerking은 열려 있습니다. 지금 바로 달려가서 하나 사먹고 싶습니다.<br/>
+                        지금은 돈이 부족해서 사먹진 않겠지만, 다음달에 교육지원금이 들어온다면 참지 않겠습니다.<br/>
+                        사실 맥도날드를 더 좋아하긴 합니다. 특히 베이컨 토마토 디럭스 세트(단품은 취급 안합니다.)는 제 인생 햄버거입니다.<br/>
+                        맥도날드를 가신다면 꼭 연락 주십시오. 저도 하나 얻어 먹겠습니다.<br/>
+                        <br/>
+                        감사합니다.<br/>
+                        <br/>
+                        - 이대진 -
+                  </p>
+                </div>
+              </div>
         </section>
     </main>
     <!-- Bootstrap v5.0 JS -->
