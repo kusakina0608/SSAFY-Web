@@ -37,6 +37,11 @@
             max-width: 100%;
             height: auto;
         }
+        .img-placement {
+            background-size:cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
     </style>
 </head>
 <body class="position-absolute">
@@ -66,21 +71,21 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="./images/slide1.jpg" alt="First slide"/>
+                        <img class="d-block w-100 img-placement" style="background-image: linear-gradient(-45deg, rgba(80, 131, 155, 0.5), rgba(0, 36, 134, 0.5)),url('https://github.com/kusakina0608/Web/blob/master/05_Web_day_5_PJT/Portfolio/images/slide1.jpg?raw=true');" alt="First slide"/>
                         <div class="carousel-caption d-none d-md-block h-50">
-                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">저는 SSAFY 'C'반 출신 개발자<br/>이대진 입니다.</h1>
+                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">저는 SSAFY C반 출신 개발자<br/>이대진 입니다.</h1>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="./images/slide2.jpg" alt="Second slide"/>
+                        <img class="d-block w-100 img-placement" style="background-image: linear-gradient(-45deg, rgba(80, 131, 155, 0.5), rgba(0, 36, 134, 0.5)),url('https://github.com/kusakina0608/Web/blob/master/05_Web_day_5_PJT/Portfolio/images/moon-4252421.jpg?raw=true');" alt="Second slide"/>
                         <div class="carousel-caption d-none d-md-block h-50">
-                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">저는 배우는 것을 좋아합니다.<br/>그리고 개발을 사랑합니다.</h1>
+                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">저는 열정과 도전정신으로<br/>최고가 되기 위해 최선을 다합니다.</h1>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="./images/slide3.png" alt="Third slide"/>
+                        <img class="d-block w-100 img-placement" style="background-image: linear-gradient(-45deg, rgba(80, 131, 155, 0.5), rgba(0, 36, 134, 0.5)),url('https://github.com/kusakina0608/Web/blob/master/05_Web_day_5_PJT/Portfolio/images/slide3.png?raw=true');" alt="Third slide"/>
                         <div class="carousel-caption d-none d-md-block h-50">
-                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">선배들과 좋은 관계 속에서<br/>도움이 되고 싶습니다.<br/>감사합니다.</h1>
+                            <h1 style="font-family: 'Nanum Gothic', sans-serif;">저의 능력을 마음껏 발휘하여<br/>사회에 공헌하는 개발자가 되고 싶습니다.</h1>
                         </div>
                     </div>
                 </div>
@@ -98,7 +103,7 @@
         <section id="about-part" class="bg-light sort-center pt-5">
             <div class="h1 bg-primary p-4 text-white w-100 text-center">About</div>
             <div class="card ml-auto mr-auto mt-4 p-4" style="width: 55rem;">
-                <img src="./images/profile2.jpg" class="card-img-top w-75 m-auto" alt="프로필 사진"/>
+                <img src="https://github.com/kusakina0608/Web/blob/master/05_Web_day_5_PJT/Portfolio/images/profile2.jpg?raw=true" class="card-img-top w-75 m-auto" alt="프로필 사진"/>
                 <div class="card-body text-center">
                     <h3 class="card-title">이대진</h3>
                     <p class="card-text">
@@ -240,25 +245,30 @@
                     </tr>
                     <tr>
                         <td>Vue.js</td>
-                        <td>⭐⭐⭐⭐</td>
-                        <td>다양한 Web Project 개발 진행</td>
+                        <td>⭐⭐</td>
+                        <td>Web Project 개발 경험 보유</td>
                     </tr>
                     <tr>
                         <td>React.js</td>
-                        <td>⭐⭐</td>
+                        <td>⭐</td>
                         <td>Document 참고하여 개발 가능</td>
                     </tr>
                     <!-- Backend -->
                     <tr>
-                        <td rowspan="3" class="align-middle">Backend</td>
+                        <td rowspan="4" class="align-middle">Backend</td>
                         <td>Node.js</td>
-                        <td>⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐</td>
                         <td>비동기 통신 / REST / Web Server 개발 및 운영</td>
                     </tr>
                     <tr>
                         <td>MySQL</td>
-                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐</td>
                         <td>MySQL / MariaDB를 사용한 다수의 프로젝트 경험 보유</td>
+                    </tr>
+                    <tr>
+                        <td>Mongo DB</td>
+                        <td>학습 예정</td>
+                        <td>Node.js + Mongo DB 프로젝트 진행 예정</td>
                     </tr>
                     <tr>
                         <td>Spring Framework</td>
@@ -274,7 +284,7 @@
                     </tr>
                     <tr>
                         <td>Nginx</td>
-                        <td>⭐⭐</td>
+                        <td>⭐</td>
                         <td>웹 서버 운영</td>
                     </tr>
                     <tr>
@@ -301,22 +311,22 @@
                         <td rowspan="3" class="align-middle">Firmware</td>
                         <td>ARM</td>
                         <td>⭐⭐⭐⭐</td>
-                        <td>Cortext-M3/A7 아키텍쳐 이해 및 개발 경험</td>
+                        <td>Cortext-M3/A7 아키텍쳐 이해 및 개발 경험 보유</td>
                     </tr>
                     <tr>
                         <td>Raspberry pi</td>
                         <td>⭐⭐⭐⭐⭐</td>
-                        <td>Raspberry pi에서 C와 Python으로 Firmware 개발</td>
+                        <td>Raspberry pi에서 C와 Python으로 Firmware 개발 경험 보유</td>
                     </tr>
                     <tr>
                         <td>NUCLEO-F103RB</td>
                         <td>학습 예정</td>
-                        <td>ST사 보드 개발(Cortex-M3)</td>
+                        <td>ST사 보드 개발(Cortex-M3) 진행 예정</td>
                     </tr>
                     <tr>
                         <td class="align-middle">RTOS</td>
                         <td>FreeRTOS</td>
-                        <td>⭐⭐⭐</td>
+                        <td>⭐⭐</td>
                         <td>Thread Programming / 모듈 제어 가능</td>
                     </tr>
                     <tr>
@@ -328,7 +338,7 @@
                     <tr>
                         <td>기본 계측</td>
                         <td>⭐</td>
-                        <td>멀티미터 / 오실로스코프 경험</td>
+                        <td>멀티미터 / 오실로스코프 경험 보유</td>
                     </tr>
                     <tr>
                         <td>Debugger</td>
@@ -340,12 +350,12 @@
                         <td rowspan="2" class="align-middle">Device Driver</td>
                         <td>Linux Kernel</td>
                         <td>⭐⭐⭐</td>
-                        <td>자유롭게 사용 가능, Linux 커널 분석 경험</td>
+                        <td>자유롭게 사용 가능, Linux 커널 분석 경험 보유</td>
                     </tr>
                     <tr>
                         <td>Linux Device Driver</td>
                         <td>⭐</td>
-                        <td>Device Tree / 캐릭터 Device Driver 개발 경험</td>
+                        <td>Device Tree / 캐릭터 Device Driver 개발 경험 보유</td>
                     </tr>
                     <tr>
                         <td class="align-middle">Embedded UI</td>
@@ -393,6 +403,16 @@
                 </div>
                 <div class="col">
                     <div class="card">
+                        <img src="https://github.com/kusakina0608/Xamarin-Digital-Clock-for-TV/blob/master/img/XamarinClock.gif?raw=true" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Xamarin Clock</h5>
+                            <p class="card-text">Xamarin과 C#을 사용하여 제작한 TV용 디지털 시계 입니다.</p>
+                        </div>
+                        <a href="https://github.com/kusakina0608/Xamarin-Digital-Clock-for-TV" target="_blank" class="btn btn-primary">Github Repository</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
                         <img src="https://raw.githubusercontent.com/kusakina0608/DirectX2D/master/img/play.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">DirectX 2D 게임</h5>
@@ -417,7 +437,7 @@
         <section id="closing-part" class="sort-center pt-5">
             <div class="h1 bg-primary p-4 text-white w-100 text-center">Closing</div>
             <div class="card" style="width: 64rem;">
-                <img src="./images/7J9A2101.jpg" class="card-img-top"  alt="...">
+                <img src="https://github.com/kusakina0608/Web/blob/master/05_Web_day_5_PJT/Portfolio/images/7J9A2101.jpg?raw=true" class="card-img-top"  alt="...">
                 <div class="card-body">
                     <h3 class="text-center">저는 지금 햄버거가 먹고 싶습니다.</h3>
                     <p class="card-text text-center">
