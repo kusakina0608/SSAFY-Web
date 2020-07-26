@@ -1,13 +1,6 @@
-## HTML
-#### a tag
-다른 웹 사이트로 이동할 때 사용한다.
-```html
-<a href="https://www.naver.com" target="_self">네이버</a>
-<a href="https://www.naver.com" target="_blank">네이버(새 탭)</a>
-```
-
+## HTML 태그
 #### hN tag
-텍스트를 강조할 때 사용한다. N이 작아질 수록 크기가 커진다.
+텍스트를 강조하거나 제목을 나타낼 때 사용한다. N이 작아질 수록 크기가 커진다.
 ``` html
 <h1>h1</h1>
 <h2>h2</h2>
@@ -17,7 +10,17 @@
 <h6>h6</h6>
 ```
 
+#### a tag
+
+다른 웹 사이트로 이동할 때 사용한다.
+
+```html
+<a href="https://www.naver.com" target="_self">네이버</a>
+<a href="https://www.naver.com" target="_blank">네이버(새 탭)</a>
+```
+
 #### ul, ol, li tag
+
 리스트를 작성할 때 사용한다. ul은 unordered list, ol은 ordered list, li는 list를 의미한다. 
 _ul tag_
 ```html
@@ -40,7 +43,7 @@ _ol tag_
 ```
 
 #### p tag
-단락을 구분할 때 사용한다.
+단락(paragraph)을 구분할 때 사용한다.
 ```html
 <p>이것은 p 태그 입니다.</p>
 ```
