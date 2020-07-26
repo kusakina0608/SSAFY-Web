@@ -1,7 +1,5 @@
 ## 관통 PJT
 
-
-
 ## MOOKUP - Kakao Oven 사용
 
 ## Navigation 및 Visual 영역 제작
