@@ -154,52 +154,175 @@ HTML에서 주석을 표현하는 방법은 다음과 같습니다.
 
 ---
 
+### 엔티티(Entity)
 
+HTML에는 미리 예약된 몇몇 문자가 있으며, 이러한 문자를 HTML 예약어(reserved characters)라고 부른다.
+이러한 HTML 예약어를 HTML 코드에서 사용하면, 웹 브라우저는 그것을 평소와는 다른 의미로 해석한다.
+따라서 HTML 예약어를 기존에 사용하던 의미 그대로 사용하기 위해 별도로 만든 문자셋을 엔티티(entity)라고 한다.
+
+엔티티의 형태는 다음과 같다.
+
+```html
+&엔티티이름;
+&#엔티티숫자;
+```
+
+HTML에서 제공하는 대표적인 엔티티(entity)는 다음과 같다.
+
+| 엔티티 문자 | 엔티티 이름 | 16진수 엔티티 숫자 |       설명        |
+| :---------: | :---------: | :----------------: | :---------------: |
+|             |   \&nbsp;   |      \&#160;       | 줄 바꿈 없는 공백 |
+|      <      |    \&lt;    |       \&#60;       |     보다 작은     |
+|      >      |    \&gt;    |       \&#62;       |      보다 큰      |
+|      &      |   \&amp;    |       \&#38;       |     AND 기호      |
+|      "      |   \&quot;   |       \&#34;       |     큰따옴표      |
+|      '      |   \&apos;   |       \&#39;       |    작은따옴표     |
+
+HTML에서 사용할 수 있는 모든 엔티티에 대한 더 자세한 정보를 원한다면, W3C 공식 사이트를 방문하여 확인할 수 있다.
+
+[Character entity references in HTML =>](https://www.w3.org/TR/html4/sgml/entities.html)
+
+---
+
+### 하이퍼링크(Hyperlink)
+
+다른 페이지나 다른 사이트로 연결되는 하이퍼링크(hyperlink)는 `<a>` 태그를 사용하여 표현할 수 있다.
 
 
 #### a tag
 
 다른 웹 사이트로 이동할 때 사용한다.
+`<a>`태그의 href 속성은 링크를 클릭하면 연결할 페이지나 사이트의 URL 주소를 명시한다.
 
 ```html
 <a href="https://www.naver.com" target="_self">네이버</a>
 <a href="https://www.naver.com" target="_blank">네이버(새 탭)</a>
 ```
 
-#### ul, ol, li tag
+##### target 속성: target 속성은 링크로 연결된 문서를 어디에서 열지를 명시한다.
 
-리스트를 작성할 때 사용한다. ul은 unordered list, ol은 ordered list, li는 list를 의미한다. 
-_ul tag_
+> *_blank*: 링크로 연결된 문서를 새 창이나 새 탭에서 염.
+> *_self*: 링크로 연결된 문서를 현재 프레임(frame)에서 염. (기본설정)
+> *_parent*: 링크로 연결된 문서를 부모 프레임(frame)에서 염.
+> *_top*: 링크로 연결된 문서를 현재 창의 가장 상위 프레임(frame)에서 염.
+> *프레임(frame) 이름*: 링크로 연결된 문서를 지정된 프레임(frame)에서 염.
+>
+> ```html
+> <h2><a href="/html/intro" target="_blank">blank</a></h2>
+> <h2><a href="/html/intro" target="_self">self</a></h2>
+> <h2><a href="/html/intro" target="_parent">parent</a></h2>
+> <h2><a href="/html/intro" target="_top">top</a></h2>
+> <h2><a href="/html/intro" target="myframe">myframe</a></h2>
+> <iframe name="myframe" style="width:50%; height: 330px"></iframe>
+> ```
+
+##### 링크의 상태(state)
+
+> 웹 브라우저에서 링크가 연결되어 있는 텍스트의 색상은 다음과 같다.
+> 기본적으로 링크가 걸린 텍스트는 밑줄에, 텍스트 색상이 파란색으로 변경된다.
+> visited 상태의 링크는 밑줄에, 텍스트 색상이 보라색으로 변경된다.
+> active 상태의 링크는 밑줄에, 텍스트 색상이 빨간색으로 변경된다.
+> 
+> | 링크의 상태 |                     설명                      |
+> | :---------: | :-------------------------------------------: |
+> |    link     | 아직 한 번도 방문한 적이 없는 상태 (기본설정) |
+> |   visited   |       한 번이라도 방문한 적이 있는 상태       |
+> |    hover    |       링크 위에 마우스를 올려놓은 상태        |
+> |   active    |       링크를 마우스로 누르고 있는 상태        |
+
+##### 페이지 책갈피
+
+> `<a>`태그의 name 속성을 이용하면 간단한 책갈피를 만들 수 있다
+> 우선 책갈피를 통해 가고 싶은 위치에 `<a>`태그를 만들고 name 속성을 작성한다.
+> 그다음에 작성한 name 속성값을 이용하여 다른 `<a>`태그에서 링크를 걸면 된다.
+
+---
+
+### 이미지(Image)
+
+문서에 이미지를 삽입할 때 사용한다.
+
+#### img tag
+
+`<img>`태그는 종료 태그가 없는 빈 태그(empty tag)이며, 다음과 같은 문법으로 사용한다.
+
+```html
+<img src="이미지주소" alt="대체문자열">
+```
+
+src 속성은 이미지가 저장된 주소의 URL 주소를 명시한다.
+alt 속성으로 이미지가 로딩될 수 없는 상황에서 이미지 대신 나타날 문자열을 설정할 수 있다.
+
+---
+
+### 리스트(List)
+
+리스트(list)란 여러 요소들을 일렬로 나열한 목록이나 명단을 의미한다.
+HTML에서는 이러한 리스트를 표현하기 위해 다음과 같은 리스트를 제공한다.
+
+1. 순서가 없는 리스트(unordered list)
+
+2. 순서가 있는 리스트(ordered list)
+
+3. 정의 리스트(definition list)
+
+#### ul tag - Unordered List
+
+순서가 없는 리스트는 `<ul>`태그로 시작하며, 여기에 포함되는 각각의 리스트 요소는 `<li>`태그로 시작한다.
+본 마커(marker)로 검정색의 작은 원(bullet)을 사용한다.
+
 ```html
 <ul>
-    <li>list1</li>
-    <li>list2</li>
-    <li>list3</li>
-    <li>list4</li>
+  <li>사과</li>
+  <li>멜론</li>
+  <li>바나나</li>
 </ul>
 ```
 
-_ol tag_
+#### ol tag - Ordered List
+
+순서가 있는 리스트는 `<ol>`태그로 시작하며, 여기에 포함되는 각각의 리스트 요소는 `<li>`태그로 시작한다.
+기본 마커로 아라비아 숫자를 사용한다.
+
 ```html
 <ol>
-    <li>list1</li>
-    <li>list2</li>
-    <li>list3</li>
-    <li>list4</li>
+  <li>사과</li>
+  <li>멜론</li>
+  <li>바나나</li>
 </ol>
 ```
 
-#### img tag
-문서에 이미지를 삽입할 때 사용한다.
+#### dl tag - Definition List
+
+정의 리스트(description list)는 용어와 그에 대한 정의를 모아놓은 리스트로 `<dl>`태그로 시작합니다.
+`<dt>`태그에는 용어의 이름이 들어가고, `<dd>`태그에는 해당 용어에 대한 정의가 들어갑니다.
+
 ```html
-<img src="img/cat-2536662.jpg" alt="고양이 사진" width="500/"/>
+<dl>
+  <dt>호박</dt>
+  <dd>- 박과의 한해살이 덩굴성 채소</dd>
+  <dt>상추</dt>
+  <dd>- 국화과의 한해살이 또는 두해살이풀</dd>
+</dl>
 ```
 
-#### strong tag
-강조하고 싶은 내용을 표시할 때 사용한다.
-```html
-<strong>강하다</strong>
-```
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### input tag
 사용자의 입력을 받을 때 사용한다.
