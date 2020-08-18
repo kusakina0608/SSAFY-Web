@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Parsing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main id="main-section" class="m-3 p-3 border">
+        <div class="mb-3">
+            <label for="input-width" class="form-label">URL 입력</label>
+            <input type="text" class="form-control" id="input-url" placeholder="URL을 입력하세요."/>
+        </div>
+        <button id="parsing-button" class="btn btn-primary w-100 mb-3">파싱하기</button>
+
+        <div id="table-wrapper" class="mb-3">
+        </div>
+    </main>
+    <script>
+        class Table{
+            constructor(){
+                this.tag = document.createElement("table");
+                this.tag.classList.add("table");
+                let thead = document.createElement("thead");
+                thead.id = "table-thead";
+                thead.classList.add("table-dark");
+                this.tag.appendChild(thead);
+                let tbody = document.createElement("tbody");
+                tbody.id = "table-tbody";
+                this.tag.appendChild(tbody);
+                document.querySelector("#table-wrapper").append(this.tag);
+            }
+            addHead(){
+                let thead = document.querySelector("#table-thead");
+                let tr = document.createElement("tr");
+                let td_name = document.createElement("td");
+                let td_value = document.createElement("td");
+                td_name.textContent = "Name";
+                td_value.textContent = "value";
+                tr.append(td_name);
+                tr.append(td_value);
+                thead.append(tr);
+            }
+            addBody(params){
+                let tbody = document.querySelector("#table-tbody");
+                for(let i=0; i<params.length; i++){
+                    let tr = document.createElement("tr");
+                    let td_name = document.createElement("td");
+                    let td_value = document.createElement("td");
+                    td_name.textContent = unescape(decodeURIComponent(params[i][0]));
+                    td_value.textContent = unescape(decodeURIComponent(params[i][1]));
+                    tr.append(td_name);
+                    tr.append(td_value);
+                    tbody.append(tr);
+                }
+            }
+        }
+        const inputURL = document.querySelector("#input-url");
+        const createButton = document.querySelector("#parsing-button");
+        const tableWrapper = document.querySelector("#table-wrapper");
+        let table = "";
+        createButton.addEventListener("click", function(){
+            let url_text = inputURL.value;
+            let get_parameter_str = url_text.substring(url_text.indexOf("?")+1, url_text.length);
+            let parameters = get_parameter_str.split("&");
+            let params = [];
+            for(let i=0; i<parameters.length; i++){
+                params.push(parameters[i].split("="));
+            }
+            if(table !== ""){
+                document.querySelector("#table-wrapper").innerHTML = "";
+            }
+            table = new Table();
+            table.addHead();
+            table.addBody(params);
+        });
+    </script>
+</body>
+</html>

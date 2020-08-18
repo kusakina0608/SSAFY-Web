@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a = prompt("세 문자열 입력");
+        let b = a.split(' ');
+        let result = [];
+        for(let i = 0; i< b.length; i++){
+            result.push(b[i]);
+        }
+        let result2 = [];
+        result2.push(result[0]);
+        for(let i = 1; i < result.length; i++){
+            let is_duplicate = false;
+            for(let j = 0; j < result2.length; j++){
+                if(result[i] === result2[j]){
+                    is_duplicate = true;
+                }
+            }
+            if(!is_duplicate){
+                result2.push(result[i]);
+            }
+        }
+        alert(result2.length);
+    </script>
+</body>
+</html>

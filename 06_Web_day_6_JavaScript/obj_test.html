@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const abc = function(){
+            console.log("abc");
+        }
+        function abcd(){
+            console.log("abcd");
+        }
+        abc.height = 200;
+        console.log(abc.height);
+        abc();
+        abcd();
+        console.log(abc.prototype);
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "bts@macdonald.co.kr||inho@mincoding.co.kr||jason@jyp.com";
+        str = str.replace(/.co.kr|.com/g, ".net")
+        alert(str);
+        let arr = str.split("||");
+        let id = [];
+        for(let i=0; i<arr.length; i++){
+            id.push(arr[i].substring(0, arr[i].indexOf("@")));
+        }
+        alert(id);
+    </script>
+</body>
+</html>
