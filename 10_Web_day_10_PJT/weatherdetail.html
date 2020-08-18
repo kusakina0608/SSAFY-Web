@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날씨 상세조회</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <!-- JavaScript and dependencies -->
+    <script defer src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <style>
+        body{
+            margin: 0;
+            background-color: deepskyblue;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        /* Header Start */
+        .day-weather-header{
+            height: 170px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+        }
+        .main-header{
+            font-size: 24px;
+        }
+        .day-weather-component{
+            display: flex;
+            align-items: center;
+        }
+        .day-temp-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            height: 170px;
+        }
+        .day-image-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 170px;
+        }
+        .day-image-wrapper > img{
+            width: 100%;
+        }
+        .day-temp{
+            font-size: 12px;
+        }
+        .day-information-container {
+            margin-left: 20px;
+        }
+        .day-information-location{
+            display: flex;
+            align-items: center;
+        }
+        .day-information-items-wrapper{
+            display: flex;
+            justify-content: space-between;
+        }
+        .day-information-items{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .day-information-humidity{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .day-information-humidity {
+            margin-top: 5px;
+        }
+        .day-information-text{
+            margin-left: 5px;
+        }
+        .day-information-small-text{
+            margin-left: 5px;
+            font-size: 12px;
+        }
+        /* Header End */
+        /* Main Start */
+        .main-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hourly-weather-section{
+            border-top: 1px solid #dddddd;
+            padding: 80px 30px 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .weather-component{
+            padding: 15px 20px;
+            width: 20%;
+            max-width: 280px;
+            min-width: 250px;
+            min-height: 450px;
+            text-align: center;
+            box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4);
+            background-color: white;
+            margin: 20px;
+        }
+        .weather-date{
+            font-size: 24px;
+            color: gray;
+        }
+        .weather-wrapper{
+            margin-top: 25px;
+            justify-content: space-between;
+        }
+        .weather{
+            display: flex;
+            margin-bottom: 25px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* End Main */
+        @media all and (max-width: 768px){
+            .main-header{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="day-weather-header">
+        <div class="main-header">Weather Today</div>
+        <div class="day-weather-component">
+            <!-- 온도 및 날씨 이미지 부분 -->
+            <div class="day-temp-container header-temp">
+                <div class="day-image-wrapper">
+                    <img src="./images/039-sun.png" alt="오늘의 날씨"/>
+                    <div class="day-temp">00˚ / 00˚</div>
+                </div>
+            </div>
+            <!-- 위치 -->
+            <div class="day-information-container">
+                <div class="day-information-location">
+                    <img src="./images/location.png" width="16px"/>
+                    <span class="day-information-text">지역</span>
+                </div>
+                <div class="day-information-humidity">
+                    <img src="./images/025-humidity.png" width="16px"/>
+                    <span class="day-information-text">00%</span>
+                </div>
+            </div>
+        </div>
+        <div>오늘의 날씨</div>
+    </header>
+    <main class="main-container">
+        <section class="hourly-weather-section">
+        </section>
+    </main>
+    <!-- Constants -->
+    <script>
+        const BaseURL = "http://api.openweathermap.org/data/2.5";
+        const API_KEY = "5f556f995a3b1a72fdce5a135d69ce67";
+        const dayWeatherComponent = document.querySelector(".day-weather-component");
+        const hourlyWeatherSection = document.querySelector(".hourly-weather-section");
+        const onul = ['오늘', '내일', '모레'];
+    </script>
+    <!-- Components -->
+    <script>
+        // Header Component
+        const dayTempContainer = (data) => {
+            return `
+            <!-- 온도 및 날씨 이미지 부분 -->
+            <div class="day-temp-container header-temp">
+                <div class="day-image-wrapper">
+                    <img src="${getIconURL(data.weather[0].icon)}" alt="오늘의 날씨"/>
+                    <div class="day-temp">기온: ${data.temp}˚</div>
+                    <div class="day-temp">체감 온도: ${data.feels_like}˚</div>
+                </div>
+            </div>
+            `;
+        };
+        const dayInformationContainer =(data)=> {
+            return `
+            <!-- 위치 -->
+            <div class="day-information-container">
+                <div class="day-information-location">
+                    <img src="./images/location.png" width="16px"/>
+                    <span class="day-information-text">${data.timezone}</span>
+                </div>
+                <div class="day-information-items-wrapper">
+                    <div class="day-information-items">
+                        <span class="day-information-text">${UnixTimestamptoDate(data.current.dt).split('분')[0]+'분'}</span>
+                    </div>
+                    <div class="day-information-items">
+                        <img src="./images/025-humidity.png" width="16px"/>
+                        <span class="day-information-text">${data.current.humidity}%</span>
+                    </div>
+                </div>
+                <div class="day-information-sun">
+                    <div class="day-information-small-text">일출: ${UnixTimestamptoDate(data.current.sunrise)}</div>
+                    <div class="day-information-small-text">일몰: ${UnixTimestamptoDate(data.current.sunset)}</div>
+                </div>
+            </div>
+            `
+        };
+        const dayComponent =(data)=> `
+            ${dayTempContainer(data.current)}
+            ${dayInformationContainer(data)}
+        `;
+        function renderArray(hourData){
+            let now = 24 - Number(UnixTimestamptoDate(hourData[0].dt).split('시')[0]);
+            let onulIdx = 0;
+            return hourData.forEach(element => {
+                const container = document.createElement("div");
+                container.classList.add("weather-component");
+                let tagData = "";
+                tagData += `<div class="weather-date">${onul[onulIdx] + ' ' + UnixTimestamptoDate(element.dt).split('시')[0] + '시'}</div>`;
+                tagData += `<div class="weather-wrapper">`;
+                tagData += dayTempContainer(element);
+                tagData += `
+                <div class="day-information-items">
+                    <div>기압: </div>
+                    <img src="./images/030-wind.png" width="16px"/>
+                    <div class="day-information-text">${element.pressure}hPa</div>
+                </div>
+                `
+                tagData += `
+                <div class="day-information-items">
+                    <div>습도: </div>
+                    <img src="./images/025-humidity.png" width="16px"/>
+                    <div class="day-information-text">${element.humidity}%</div>
+                </div>
+                `
+                tagData += `
+                <div class="day-information-items">
+                    <div>바람: </div>
+                    <div class="day-information-text">${windDirection(element.wind_deg) + '풍'}</div>
+                </div>
+                `
+                tagData += `</div>`;
+                container.innerHTML = tagData;
+                hourlyWeatherSection.append(container);
+                if(--now == 0){
+                    onulIdx++;
+                    now = 24;
+                }
+            });
+        }
+    </script>
+    <!-- Functions -->
+    <script>
+        // Get Current Location from Client Browser
+        const getPosition = function(options){
+            return new Promise(function(resolve, reject){
+                navigator.geolocation.getCurrentPosition(resolve, reject, options)
+            })
+        }
+        // One Call API
+        const OneCall = async () => {
+            try{
+                const position = await getPosition();
+                const {latitude, longitude} = position.coords;
+                let data = await axios.get(`${BaseURL}/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely&units=metric&lang=kr&appid=${API_KEY}`);
+                dayWeatherComponent.innerHTML = dayComponent(data.data);
+                renderArray(data.data.hourly);
+            }catch(err){
+                console.log(err);
+                let data = await axios.get(`${BaseURL}/onecall?lat=36.3501099&lon=127.3078268&exclude=minutely&units=metric&lang=kr&appid=${API_KEY}`);
+                dayWeatherComponent.innerHTML = dayComponent(data.data);
+                renderArray(data.data.hourly);
+            }
+        };
+        // Get Icon URL from openweathermap.org
+        const getIconURL = (icon) => {
+            return `http://openweathermap.org/img/wn/${icon}@2x.png`
+        }
+        // Convert Unix Timestamp to Date Object
+        const UnixTimestamptoDate = (timestamp) => {
+            var date = new Date(timestamp * 1000);
+            let hours = date.getHours();
+            let minutes = date.getMinutes();
+            let seconds = date.getSeconds();
+            return `${hours}시 ${minutes}분 ${seconds}초`;
+        }
+        // Convert Wind Direction Expression Format
+        const windDirection = (wind) => {
+            if(0<=wind<90){
+                return '북동'
+            }
+            else if(90<=wind<180){
+                return '북서';
+            }
+            else if(180<=wind<270){
+                return '남서';
+            }
+            else{
+                return '남동';
+            }
+        }
+    </script>
+    <script>
+        OneCall();
+    </script>
+</body>
+</html>

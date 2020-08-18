@@ -1,0 +1,18 @@
+Current Weather Data
+API_KEY: 971e84e1d827a07b23fa7f75d5c6894a
+API_KEY: 5f556f995a3b1a72fdce5a135d69ce67
+
+By city name
+API Test: http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=971e84e1d827a07b23fa7f75d5c6894a
+
+By geographic coordinates
+API Test: http://api.openweathermap.org/data/2.5/weather?lat=37.56826&lon=126.977829&appid=971e84e1d827a07b23fa7f75d5c6894a
+
+One Call API
+http://api.openweathermap.org/data/2.5/onecall?lat=37.56826&lon=126.977829&exclude=minutely&units=metric&lang=kr&appid=5f556f995a3b1a72fdce5a135d69ce67
+
+섭씨 온도의 경우
+&units=metric
+
+한글
+&lang=kr
