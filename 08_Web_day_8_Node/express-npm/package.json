@@ -1,0 +1,14 @@
+{
+  "name": "express-npm",
+  "version": "1.0.0",
+  "description": "익스프레스 적용해보기",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "이대진",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

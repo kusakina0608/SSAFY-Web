@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%= data %>
+    hello ejs!!
+    <% const name = "hello" %>
+    <%= name %>
+    <!-- ejs 코드 안에서는 document, window 같은 함수를 사용할 수 없다 -->
+    <!-- #으로 주석 처리 -->
+    <% const hello = [1, 2, 3, 4, 5] %>
+    <% for(let i=0; i<hello.length; i++){ %>
+        <div><%= hello[i] %></div>
+    <% } %>
+
+    <% hello.forEach(el => { %>
+        <div>
+            <%= el %>
+        </div>
+    <% }) %>
+</body>
+</html>
