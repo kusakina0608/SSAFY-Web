@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인피드</title>
+    <title>회원정보</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 </head>
 <body>
-    메인 페이지입니다.
-    모든 회원 정보를 출력합니다.
     <header id="header-section" class="m-auto"  style="width: 540px">
         <div class="m-5">
-            <form method="POST" action="/addMember">
+            <form method="POST" onsubmit="return valid();" action="/addMember">
                 <div class="input-group mb-3">
                     <span class="input-group-text">이름</span>
-                    <input id="name" type="text" class="form-control" placeholder="이름 입력">
+                    <input id="name" name="name" type="text" class="form-control" placeholder="이름 입력">
                 </div>
                 <div class="input-group mb-3">
-                    <input id="email-id" type="text" class="form-control" placeholder="이메일 입력">
-                    <button id="email-domain" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">@gmail.com</button>
+                    <input id="email-id" name="email1" type="text" class="form-control" placeholder="이메일 입력">
+                    <input id="email-domain" name="email2" type="hidden" value="@gmail.com">
+                    <button id="email-domain-btn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">@gmail.com</button>
                     <ul class="dropdown-menu dropdown-menu-right" id="email-dropdown">
                         <li><a class="dropdown-item" onclick="changeEmail(this.innerHTML)">@gmail.com</a></li>
                         <li><a class="dropdown-item" onclick="changeEmail(this.innerHTML)">@naver.com</a></li>
@@ -29,11 +28,12 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">주소</span>
-                    <input id="address" type="text" class="form-control" placeholder="서울특별시 강남구 테헤란로 ...">
+                    <input id="address" name="address" type="text" class="form-control" placeholder="서울특별시 강남구 테헤란로 ...">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">휴대폰 번호</span>
-                    <button id="phone-first" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">010</button>
+                    <input id="phone-first" name="phone1" type="hidden" value="010">
+                    <button id="phone-first-btn" class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">010</button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li><a class="dropdown-item" onclick="changePhone(this.innerHTML)">010</a></li>
                         <li><a class="dropdown-item" onclick="changePhone(this.innerHTML)">011</a></li>
@@ -42,41 +42,103 @@
                         <li><a class="dropdown-item" onclick="changePhone(this.innerHTML)">018</a></li>
                         <li><a class="dropdown-item" onclick="changePhone(this.innerHTML)">019</a></li>
                     </ul>
-                    <input id="phone-second" type="text" class="form-control text-center" placeholder="1234">
-                    <input id="phone-third" type="text" class="form-control text-center" placeholder="5678">
+                    <input id="phone-second" name="phone2" type="text" class="form-control text-center" placeholder="1234">
+                    <input id="phone-third" name="phone3" type="text" class="form-control text-center" placeholder="5678">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-text">
-                      <input id="info-checkbox"class="form-check-input" type="checkbox" value="">
+                      <input id="info-checkbox" name="info" class="form-check-input" type="checkbox" value="">
                     </div>
                     <span type="text" class="form-control text-center" aria-label="Text input with checkbox">개인정보 활용 동의</span>
                 </div>
                 <div class="input-group">
                     <button type="submit" class="btn btn-primary m-auto">등록하기</button> 
-                    <button type="button" class="btn btn-danger m-auto">취소하기</button>
                 </div>
             </form>
         </div>
     </header>
+    <main id="main-section" class="w-75 m-auto">
+        <table class="table text-center">
+            <thead class="table-dark">
+                <tr>
+                    <td>ID</td>
+                    <td>이름</td>
+                    <td>E-mail</td>
+                    <td>주소</td>
+                    <td>전화번호</td>
+                    <td>개인정보 동의 여부</td>
+                    <td>편집</td>
+                </tr>
+            </thead>
+            <tbody>
+            <% data.forEach(li => { %>
+                <tr>
+                    <td><%=li.id%></td>
+                    <td><%=li.name%></td>
+                    <td><%=li.email%></td>
+                    <td><%=li.address%></td>
+                    <td><%=li.phone%></td>
+                    <td><%=li.agree==1?"O":"X"%></td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" onclick="updateMember('<%=li.id%>')">수정</button>
+                        <button class="btn btn-danger btn-sm ml-3" onclick="deleteMember('<%=li.id%>')">삭제</button>
+                    </td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </main>
     <script>
         const emailDomain = document.querySelector("#email-domain");
-        const emailDropdown = document.querySelector("#email-dropdown");
+        const emailDomainBtn = document.querySelector("#email-domain-btn");
         const phoneFirst = document.querySelector("#phone-first");
-        // name
-        // email-id
-        // email-domain
-        // address
-        // phone-first
-        // phone-second
-        // phone-third
-        // document.querySelector("#info-checkbox").checked
+        const phoneFirstBtn = document.querySelector("#phone-first-btn");
         function changeEmail(val){
-            emailDomain.innerHTML = val;
+            emailDomain.value = val;
+            emailDomainBtn.innerHTML = val;
         }
         function changePhone(val){
-            phoneFirst.innerHTML = val;
+            phoneFirst.value = val;
+            phoneFirstBtn.innerHTML = val;
         }
-
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email-id");
+        const phone2 = document.querySelector("#phone-second");
+        const phone3 = document.querySelector("#phone-third");
+        function valid(){
+            if(!name.value){
+                alert("이름을 입력하세요");
+                return false;
+            }
+            else if(!email.value){
+                alert("이메일을 입력하세요");
+                return false;
+            }
+            else if(!phone2.value | !phone3.value){
+                alert("휴대폰 번호를 입력하세요");
+                return false;
+            }
+            else if(!(3<=phone2.value.length && phone2.value.length<=4) || !(phone3.value.length===4)){
+                alert("휴대폰 번호가 올바르지 않습니다");
+                console.log(phone2.value.length)
+                console.log(phone3.value.length)
+                return false;
+            }
+            else if(Number(phone2.value) === NaN || Number(phone3.value) === NaN){
+                alert("휴대폰 번호는 숫자만 입력하세요");
+                return false;
+            }
+            return true;
+        }
+        function updateMember(id){
+            location.href=`/edit/${id}`;
+        }
+        
+        function deleteMember(id){
+            if(confirm(id + "번 회원의 정보를 정말 삭제하시겠습니까?")){
+                location.href=`/delete/${id}`;
+            }
+        }
     </script>
     <!-- JavaScript and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

@@ -13,56 +13,78 @@ sequelize.sync({force: false})
 .catch((err) => console.log(err));
 
 
-app.get("/", (req, res) => {
-    return res.render("index");
+app.get("/", async (req, res) => {
+    try {
+        const data = await Member.findAll();
+        return res.render("index", {data: data});
+    }catch(error){
+        console.log(error);
+    }
 });
 
-app.get("/edit", (req, res) => {
-    console.log("여기는 정보수정페이지")
-    return res.render("login");
-})
-
-app.get("/addMember", (req, res) => {
-    console.log("여기는 회원가입페이지")
-    return res.render("login");
-})
-
-// app.get("/", async (req, res, next) => {
-//     try{
-//         const data = await Member.findAll();
-//         return res.json({data: data});
-//     }catch(error){
-//         console.log(error);
-//     }
-// });
-
-app.post("/", async (req, res) => {
-    try{ // 
-        const createData = await Member.create({
-            name: "이대진",
-            email: "platina.kusakina@gmail.com",
-            address: "인천광역시 부평구 길주남로 144",
-            phone: "010-9700-5706",
-            agree: true
-        })
-        return res.json({createData: createData});
-    }catch(error){
-        console.log(error);
-    }
-})
-
-app.patch("/", async (req, res) => {
+app.post("/addMember", async (req, res) => {
     try{
-        const updateData = await Member.update({
-            email: "cattleya9700@gmail.com"
-        }, {
-            where: {email: "platina.kusakina@gmail.com"}
-        });
-        return res.json({updateData: updateData});
+        const {name, email1, email2, address, phone1, phone2, phone3, info} = req.body;
+        const createData = await Member.create({
+            name: name,
+            email: email1 + email2,
+            address: address,
+            phone: phone1 + '-' + phone2 + '-' + phone3,
+            agree: info===''
+        })
+        return res.redirect("/");
     }catch(error){
         console.log(error);
     }
-})
+});
+
+app.get("/edit/:id", async (req, res) => {
+    try {
+        const {id} = req.params;
+        const data = await Member.findOne({
+            where: {id: id}
+        });
+        console.log("===========================================================");
+        console.log(data);
+        return res.render("edit", {data: data});
+    }catch(error){
+        console.log(error);
+    }
+});
+
+app.post("/edit/:id", async (req, res) => {
+    try{
+        const {id} = req.params;
+        const {name, email1, email2, address, phone1, phone2, phone3, info} = req.body;
+        const updateData = await Member.update({
+            name: name,
+            email: email1 + email2,
+            address: address,
+            phone: phone1 + '-' + phone2 + '-' + phone3,
+            agree: info===''
+        }, {
+            where: {id: id}
+        });
+        return res.redirect("/");
+    }catch(error){
+        console.log(error);
+    }
+});
+
+app.get("/delete/:id", async (req, res) => {
+    try{
+        const {id} = req.params;
+        const deleteData = await Member.destroy({
+            where: {
+                id: id
+            }
+        });
+        res.redirect("/");
+    }catch(error){
+        console.log(error);
+    }
+        
+});
 
 app.delete("/", async (req, res) => {
     try{
@@ -75,6 +97,6 @@ app.delete("/", async (req, res) => {
     }catch(error){
         console.log(error);
     }
-})
+});
 
-app.listen(8000, () => console.log("서버 실행!!"));
+app.listen(80, () => console.log("서버 실행!!"));

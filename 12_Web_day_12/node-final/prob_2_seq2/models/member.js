@@ -25,10 +25,10 @@ module.exports = class Member extends Sequelize.Model {
             }
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
+            paranoid: false,
             modelName: "member",
             tableName: "member",
-            paranoid: false,
             charset: "utf8mb4",
             collate: "utf8mb4_general_ci"
         });
