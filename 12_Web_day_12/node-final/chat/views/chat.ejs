@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+</head>
+<body>
+    <div class="fixed-top">
+        <ul class="chat-list list-group">
+            <li class="list-group-item"> &nbsp;</li>
+            <li class="list-group-item"> &nbsp;</li>
+            <li class="list-group-item"> &nbsp;</li>
+            <li class="list-group-item"> &nbsp;</li>
+            <li class="list-group-item"> &nbsp;</li>
+            <li class="list-group-item"> &nbsp;</li>
+        </ul>
+    </div>
+    <div class="input-group mb-3 mt-5 fixed-bottom">
+        <span class="input-group-text" id="basic-addon1">fsda</span>
+        <input type="text" class="form-control" id="chat-text" aria-label="Username" aria-describedby="basic-addon1">
+        <button id="send-button" class="btn btn-primary">보내기</button>
+        <button type="button" class="disconnect-button btn btn-danger">나가기</button>
+    </div>
+    <script>
+        const chatList = document.querySelector(".chat-list");
+        const chatText = document.querySelector("#chat-text");
+        const sendButton = document.querySelector("#send-button");
+        const disconnectButton = document.querySelector(".disconnect-button");
+        const tmpID = Math.random().toString(36).substr(2, 16);
+        document.querySelector("#basic-addon1").innerHTML = tmpID;
+        const socket = io("/chat-room");
+        sendButton.addEventListener("click", function(e){
+            e.preventDefault(); // form tag 에서 엔터 키를 누르거나 버튼을 누르면 새로고침이 되며 데이터가 전송되는 것을 막는 method
+            socket.emit("chat message", `[${tmpID}]: ` +  chatText.value);
+            chatText.value = "";
+        })
+        chatText.addEventListener("keypress", function(e){
+            if(e.keyCode == 13){
+                e.preventDefault(); // form tag 에서 엔터 키를 누르거나 버튼을 누르면 새로고침이 되며 데이터가 전송되는 것을 막는 method
+                socket.emit("chat message", `[${tmpID}]: ` +  chatText.value);
+                chatText.value = "";
+            }
+        })
+        disconnectButton.addEventListener("click", function(){
+            socket.disconnect();
+            alert("연결이 종료되었습니다.");
+        });
+        socket.on("chat message", msg => {
+            console.log(msg);
+            chatList.innerHTML = `<li class="list-group-item">${msg}</li>` + chatList.innerHTML;
+        })
+    </script>
+    <!-- JavaScript and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+</body>
+</html>
