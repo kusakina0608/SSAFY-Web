@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <word-relay start-word="유혜린"></word-relay><br>
+        <word-relay start-word="이대진"></word-relay><br>
+        <word-relay start-word="남현준"></word-relay><br>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        Vue.component( "word-relay", {
+            template: `
+            <div>
+                <div>끝말잇기</div>
+                <div>{{prevWord}}</div>
+                <form v-on:submit.prevent="onSubmitForm">
+                    <div>
+                        <input type="text" v-model:value="curWord" ref="answer">
+                        <button type="submit">입력</button>
+                    </div>
+                </form>
+                <div>{{result}}</div>
+            </div>
+            `,
+            props: ["start-word"],
+            data(){
+                return {
+                    prevWord: this.startWord,
+                    curWord: "",
+                    result: ""
+                }
+            },
+            methods: {
+                onSubmitForm(){
+                    let prev = this.prevWord.trim().split("");
+                    let current = this.curWord.trim().split("");
+                    if(current[0]===prev[prev.length-1]){
+                        this.result="정답!"
+                        this.prevWord = this.curWord;
+                        this.curWord = "";
+                    }else{
+                        this.result="땡!!!!!!!!!!!!!!!"
+                    }
+                }
+            }
+        })
+        const app = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+</html>

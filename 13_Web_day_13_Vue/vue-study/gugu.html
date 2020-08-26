@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{first}} 곱하기 {{second}} 는?</div>
+        <form>
+            <input type="number" ref="answer" v-model:value="value">
+            <button type="submit">입력</button>
+        </form>
+        <div>{{result}}</div>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    first: Math.ceil(Math.random() * 9),
+                    second: Math.ceil(Math.random() * 9),
+                    value: "",
+                    result: ""
+                }
+            },
+            methods:{
+                onSubmitForm(){
+                    console.log(this.first, this.second, this.value);
+                    if(this.first * this.second === parseInt(this.value)){
+                        this.result="정답";
+                        this.first=Math.ceil(Math.random() * 9);
+                        this.second=Math.ceil(Math.random() * 9);
+                        this.$refs.answer.focus();
+                    }else{
+                        this.result = "땡"
+                    }
+                    this.value="";
+                }
+            }
+        })
+    </script>
+</body>
+</html>

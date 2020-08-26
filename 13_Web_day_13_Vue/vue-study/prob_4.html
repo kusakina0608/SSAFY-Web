@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버킷리스트</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="bucket in bucketList" v-if="bucket.done">
+                {{bucket.text}}
+            </li>
+        </ul>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    bucketList: [
+                        {id: 1, text: "이삭토스트 먹기", done: false},
+                        {id: 2, text: "몬스터 에너지 마시기", done: true},
+                        {id: 3, text: "잠깨기", done: false},
+                        {id: 4, text: "방 치우기", done: false},
+                        {id: 5, text: "라즈베리파이 써보기", done: true},
+                        {id: 6, text: "드러눕기", done: true},
+                        {id: 7, text: "잠자기", done: true}
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

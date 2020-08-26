@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    msg: "hello"
+                }
+            },
+            // Component가 DOM에 추가되기 전, 가장 먼저 실행되는 라이프사이클
+            // 데이터에 접근이 불가능하다.
+            beforeCreate(){
+                console.log("hello1");
+                console.log(this.msg);
+            },
+            // 데이터, computed, method에 접근이 가능하나, DOM에는 추가되지 않는다.
+            created(){
+                console.log("hello2");
+                console.log(this.msg)
+            },
+            // 가상 DOM은 생성되었지만 실제 DOM에는 없는 상태
+            beforeMount(){
+                console.log("beforMount");
+            },
+            // 가장 많이 사용된다. 가상 DOM이 실제 DOM에 부착되고 난 후에 실행된다.
+            // axios 호출 등에 많이 사용된다.
+            mounted(){
+                console.log("mounted");
+            },
+            // 데이터가 변해서 DOM에 그 변화를 적용시킬 때 변화 직전에 호출된다.
+            beforeUpdate(){
+                console.log("beforeUpdate");
+            },
+            // 데이터가 변경이 완료되어 DOM에 적용된 상태
+            // 변경된 값들을 이용해 DOM에 접근할 때 주로 사용
+            // 이곳에서 data를 변경하면 무한루프가 일어날 수 있다.
+            updated(){
+                console.log("updated");
+            },
+            // 인스턴스가 해체되기 직전에 호출하기 때문에 
+            // 이 단계에서 이벤트 리스너를 해제하는 등 인스턴스가 사라지기 전에 해야 할 일들을 한다.
+            beforeDestroy(){
+                console.log("beforeDestroy");
+            },
+            // 해체가 끝난 이후기 때문에 인스턴스의 속성에 접근할 수 없다.
+            destroy(){
+                console.log("destroy");
+            }
+        });
+    </script>
+</body>
+</html>

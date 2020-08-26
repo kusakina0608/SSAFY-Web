@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="block===0">a</div>
+        <div v-if="block===0">b</div>
+        <div v-if="block===0">c</div>
+
+        <div v-if="block===1">d</div>
+        <div v-if="block===1">e</div>
+        <div v-if="block===1">f</div>
+
+        <div v-if="block===2">g</div>
+        <div v-if="block===2">h</div>
+        <div v-if="block===2">i</div>
+        <button v-on:click="next">다음</button>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    block: 0
+                }
+            },
+            methods: {
+                next(){
+                    this.block++;
+                    this.block%=3;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>    
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    todos: [
+                        {text: "자바스크립트 배우기"},
+                        {text: "Vue 배우기"},
+                        {text: "점심 밥 먹기"},
+                        {text: "기프티콘 사기"},
+                        {text: "휴식냥이"}
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

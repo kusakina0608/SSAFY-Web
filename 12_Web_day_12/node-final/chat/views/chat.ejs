@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const firstNameIdx = Math.floor(Math.random()*57);
+        const nickName = prompt("이름을 입력하세요");
+        const tmpColor = (Math.round((Math.random() * 0x44) + 0xaa)).toString(16) + (Math.round((Math.random() * 0x44) + 0xaa)).toString(16) + (Math.round((Math.random() * 0x44) + 0xaa)).toString(16);
+    </script>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 </head>
 <body>
-    <div class="fixed-top">
+    <div class="fixed-top p-5">
         <ul class="chat-list list-group">
             <li class="list-group-item"> &nbsp;</li>
             <li class="list-group-item"> &nbsp;</li>
@@ -19,7 +24,7 @@
             <li class="list-group-item"> &nbsp;</li>
         </ul>
     </div>
-    <div class="input-group mb-3 mt-5 fixed-bottom">
+    <div class="input-group p-5 fixed-bottom">
         <span class="input-group-text" id="basic-addon1">fsda</span>
         <input type="text" class="form-control" id="chat-text" aria-label="Username" aria-describedby="basic-addon1">
         <button id="send-button" class="btn btn-primary">보내기</button>
@@ -30,18 +35,22 @@
         const chatText = document.querySelector("#chat-text");
         const sendButton = document.querySelector("#send-button");
         const disconnectButton = document.querySelector(".disconnect-button");
-        const tmpID = Math.random().toString(36).substr(2, 16);
-        document.querySelector("#basic-addon1").innerHTML = tmpID;
+        console.log(tmpColor);
+        document.querySelector("#basic-addon1").innerHTML = "입력";
         const socket = io("/chat-room");
         sendButton.addEventListener("click", function(e){
             e.preventDefault(); // form tag 에서 엔터 키를 누르거나 버튼을 누르면 새로고침이 되며 데이터가 전송되는 것을 막는 method
-            socket.emit("chat message", `[${tmpID}]: ` +  chatText.value);
+            let msg = `${firstNameIdx}|FIRST_NAME_IDX${nickName}|USER_NAME${chatText.value}|USER_COLOR${tmpColor}`;
+            console.log("[전송] ", msg);
+            socket.emit("chat message", msg);
             chatText.value = "";
         })
         chatText.addEventListener("keypress", function(e){
             if(e.keyCode == 13){
                 e.preventDefault(); // form tag 에서 엔터 키를 누르거나 버튼을 누르면 새로고침이 되며 데이터가 전송되는 것을 막는 method
-                socket.emit("chat message", `[${tmpID}]: ` +  chatText.value);
+            let msg = `${firstNameIdx}|FIRST_NAME_IDX${nickName}|USER_NAME${chatText.value}|USER_COLOR${tmpColor}`;
+                console.log("[전송] ", msg);
+                socket.emit("chat message", msg);
                 chatText.value = "";
             }
         })
@@ -50,8 +59,8 @@
             alert("연결이 종료되었습니다.");
         });
         socket.on("chat message", msg => {
-            console.log(msg);
-            chatList.innerHTML = `<li class="list-group-item">${msg}</li>` + chatList.innerHTML;
+            console.log("[수신] ", msg);
+            chatList.innerHTML = `<li class="list-group-item" style="background-color: #${msg.split("|USER_COLOR")[1]}">${msg.split("|USER_COLOR")[0]}</li>` + chatList.innerHTML;
         })
     </script>
     <!-- JavaScript and dependencies -->

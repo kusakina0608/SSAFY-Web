@@ -117,3 +117,5 @@ dist
 
 # VScode
 .vscode/*
+
+SSAFY_Crawling/*

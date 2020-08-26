@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>끝말잇기</div>
+        <div>{{prevWord}}</div>
+        <div><input v-model:value="curWord"><button v-on:click="checkWord">입력</button></div>
+        <div>{{result}}</div>
+    </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    prevWord: "유혜린",
+                    curWord: "",
+                    result: ""
+                }
+            },
+            methods: {
+                checkWord(){
+                    let prev = this.prevWord.trim().split("");
+                    let current = this.curWord.trim().split("");
+                    if(current[0]===prev[prev.length-1]){
+                        this.result="정답!"
+                        this.prevWord = this.curWord;
+                        this.curWord = "";
+                    }else{
+                        this.result="땡!!!!!!!!!!!!!!!"
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
