@@ -118,4 +118,5 @@ dist
 # VScode
 .vscode/*
 
-SSAFY_Crawling/*
+Vue-PJT/
+14_Web_day_14_PJT/board/backend/uploads/*
